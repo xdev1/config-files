@@ -64,9 +64,13 @@ set mouse=a
 set noswapfile
 set scrolloff=8
 set sidescrolloff=8
+let $LANG = 'en_US'
 set encoding=utf-8
 set fileencoding=utf-8
-set guifont=Monospace:h20
+set guifont=Lucida_Console:h18
+set guioptions-=m " removes menu bar
+set guioptions-=T " removes toolbar
+set guioptions-=r " removes scrollbar
 set number
 " set relativenumber
 set expandtab
@@ -82,8 +86,12 @@ set guioptions-=e
 set nowrap
 set spell
 set list
-set showbreak=↪\ 
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+" set showbreak=↪\ 
+" set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
+set listchars=tab:»·,nbsp:+,trail:·,extends:→,precedes:←
+
+
 set confirm
 set splitright
 set splitbelow
@@ -95,9 +103,26 @@ set shortmess+=c
 set signcolumn=number
 
 
+" set shell=\"C:\Program\ Files\Git\git-bash.exe\"
+
+if has("win32")
+  au GUIEnter * simalt ~x
+  " set shell=C:\Windows\Sysnative\wsl.exe
+  set shell=\"C:\Program\ Files\Git\bin\bash.exe\"
+  set shellpipe=|
+  set shellredir=>
+  set shellcmdflag=
+endif
+
 " reselect visual selection after identing
 vnoremap < <gv
 vnoremap > >gv
+
+" copy/paste etc
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
 
 
 " set nojoinspaces
