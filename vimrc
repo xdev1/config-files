@@ -37,11 +37,11 @@ Plugin 'morhetz/gruvbox'
 Plugin 'preservim/nerdtree'
 Plugin 'prettier/vim-prettier'
 Plugin 'voldikss/vim-floaterm'
-" Plugin 'mengelbrecht/lightline-bufferline'
-
 " Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'mhinz/vim-startify'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -156,7 +156,7 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme tender
 
 set laststatus=2
-" let g:lightline = { 'colorscheme': 'onedark' }
+let g:lightline = { 'colorscheme': g:colors_name }
 
 
 " Start NERDTree and leave the cursor in it.
@@ -190,23 +190,6 @@ augroup ProjectDrawer
   " autocmd VimEnter * :Vexplore
 augroup END
 
-let g:lightline = {
-      \ 'colorscheme': g:colors_name,
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ }
-      \ }
-
 " startify configuration
 let g:startify_files_number = 8
 let g:startify_custom_header = ''
@@ -224,3 +207,8 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
 endif
 
 inoremap <silent><expr> <c-space> coc#refresh()
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|boxroom'
